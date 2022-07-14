@@ -3,7 +3,7 @@ public class PrimitiveTest01 {
 	public static void main(String[] args) {
 		int num1 = 10;
 		System.out.println(num1);
-		
+		 
 		//8진수로 숫자 만들기
 		int num2 = 012;
 		System.out.println(num2);

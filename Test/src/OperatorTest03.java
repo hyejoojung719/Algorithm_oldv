@@ -37,7 +37,7 @@ public class OperatorTest03 {
 		// 다른 표현 방법
 		// 대입받을 변수 = 조건식  ? 참일 때 대입할 값 : 거짓일 때 대입할 값
 		b = a%2==0?"짝수":"홀수";
-		System.out.println(b);
+		System.out.println(b); 
 		
 		
 		char c = 'A';
