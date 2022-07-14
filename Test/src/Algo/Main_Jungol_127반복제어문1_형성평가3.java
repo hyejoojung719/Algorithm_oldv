@@ -15,7 +15,7 @@ public class Main_Jungol_127반복제어문1_형성평가3 {
 			cnt++;
 		}
 		
-		System.out.println("sum : "+sum);
-		System.out.println("avg : "+(double)sum/cnt);
+		System.out.println("sum : " + sum);
+		System.out.println(String.format("avg : %.1f", (double)sum/cnt));
 	}
 }
