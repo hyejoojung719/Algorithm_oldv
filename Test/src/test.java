@@ -4,7 +4,7 @@ public class test {
 		System.out.println("Hello World!");
 		
 		// 1. Primitive Data Type
-			// 기본 정수형 : int 
+			// 기본 정수형은 : int 
 		// 2. Reference Type
 		
 	}
