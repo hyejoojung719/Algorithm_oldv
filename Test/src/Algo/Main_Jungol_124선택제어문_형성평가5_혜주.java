@@ -1,7 +1,7 @@
 package Algo;
 import java.util.Scanner;
 
-public class Main_Jungol_형성평가5_혜주 {
+public class Main_Jungol_124선택제어문_형성평가5_혜주 {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 

@@ -1,3 +1,4 @@
+package Test2;
 
 public class OperatorTest {
 	public static void main(String[] args) {

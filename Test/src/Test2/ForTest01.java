@@ -1,3 +1,4 @@
+package Test2;
 
 public class ForTest01 {
 	public static void main(String[] args) {

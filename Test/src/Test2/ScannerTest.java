@@ -1,3 +1,4 @@
+package Test2;
 import java.util.*;
 
 public class ScannerTest {

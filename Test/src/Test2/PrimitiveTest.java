@@ -1,3 +1,4 @@
+package Test2;
 
 public class PrimitiveTest {
 	public static void main(String[] args) {
