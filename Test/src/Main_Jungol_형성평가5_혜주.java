@@ -6,6 +6,8 @@ public class Main_Jungol_형성평가5_혜주 {
 
 		int input = s.nextInt();
 
-		System.out.println("28");
+		if(input==2) System.out.println("28");
+		else if(input==4 || input==6 || input==9 || input==11) System.out.println("30");
+		else System.out.println("31");
 	}
 }
