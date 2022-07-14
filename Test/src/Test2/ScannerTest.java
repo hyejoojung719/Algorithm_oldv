@@ -1,15 +1,17 @@
 package Test2;
-import java.util.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class ScannerTest {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 
 		// 입력값의 구분은 공백으로 함.
-		//System.setIn(new FileInputStream("src/test2/input.txt"));
+		System.setIn(new FileInputStream("src/test2/input.txt"));
 		Scanner sc = new Scanner(System.in);
-		
+		/*
 		// 문자열 입력
 		String str = sc.next();
 		System.out.println(str);
@@ -25,7 +27,7 @@ public class ScannerTest {
 		// 한 줄 입력
 		String str1 = sc.nextLine();
 		System.out.println(str1);
-		
+		*/
 		sc.close();
 		
 		
