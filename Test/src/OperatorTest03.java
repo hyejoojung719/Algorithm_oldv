@@ -7,8 +7,9 @@ public class OperatorTest03 {
 		num++;	// 다른 연산 수행 후 num값 증가
 		
 		
-		if(num<10 && num++>5) {
-			System.out.println(" ");
+		if(num < 10 && num++ > 5) {
+			System.out.println(" 조건은 true ");
 		}
+		System.out.println(num);
 	}
 }
