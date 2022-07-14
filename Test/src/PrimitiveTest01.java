@@ -23,4 +23,5 @@ public class PrimitiveTest01 {
 	}
 }
 
+// 크기 순서
 // boolean < byte < short < char <  int < long < float <  double
