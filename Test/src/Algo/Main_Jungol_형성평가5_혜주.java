@@ -1,3 +1,4 @@
+package Algo;
 import java.util.Scanner;
 
 public class Main_Jungol_형성평가5_혜주 {

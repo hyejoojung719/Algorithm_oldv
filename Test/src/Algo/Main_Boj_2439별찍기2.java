@@ -1,3 +1,4 @@
+package Algo;
 import java.util.Scanner;
 
 public class Main_Boj_2439º°Âï±â2 {
