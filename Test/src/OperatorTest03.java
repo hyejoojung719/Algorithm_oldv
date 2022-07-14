@@ -39,5 +39,10 @@ public class OperatorTest03 {
 		b = a%2==0?"짝수":"홀수";
 		System.out.println(b);
 		
+		
+		char c = 'A';
+		//System.out.println(c+1);	//66
+		System.out.println(++c);	//B //연산보다 비트를 직접 바꾸는게 빠르다
+		
 	}
 }
