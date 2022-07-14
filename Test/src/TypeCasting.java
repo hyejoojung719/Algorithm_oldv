@@ -1,8 +1,7 @@
 
 public class TypeCasting {
 	public static void main(String[] args) {
-		 
-		
+		  
 		//자동 형 변환(묵시적 형변환)
 		int a = 'A';	//65
 		System.out.println(a);

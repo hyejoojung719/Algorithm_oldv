@@ -6,13 +6,12 @@ public class WhileTest {
 		int i=5;
 		int sum=0;
 		while(i<=100) {
-			
 			sum+=i;
-			
 			i+=5;
-			
 		}
 		
 		System.out.println(sum);
+		
+		//break이용한 다른 방법도 있당....
 	}
 }

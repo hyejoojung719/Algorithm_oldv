@@ -4,7 +4,7 @@ public class ForTest02 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// 2단 출력하기
+		// 2단 출력하기 
 		/*
 		System.out.println("2단====");
 		

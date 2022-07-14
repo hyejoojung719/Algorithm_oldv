@@ -4,7 +4,7 @@ public class SwitchCase {
 		int score = (int)(Math.random()*6)+1;
 		
 		// Math.random() : 0<= ? <1
-		// 여기에 6을 곱하면 : 0<= ? <6
+		// 여기에 6을 곱하면 : 0<= ? <6 
 		// 여기에 1을 더하면 : 1<= ? <7
 		
 		switch(score) {

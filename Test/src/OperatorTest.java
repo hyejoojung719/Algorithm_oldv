@@ -4,7 +4,7 @@ public class OperatorTest {
 		int num = 10;
 		
 		//++num; 	// num 증가 후 다른 연산 수행
-		//num++;	// 다른 연산 수행 후 num값 증가
+		//num++;	// 다른 연산 수행 후 num값 증가 
 		
 		if(num-- <10 /*--num < 10*/) {
 			System.out.println(" 조건은 true");

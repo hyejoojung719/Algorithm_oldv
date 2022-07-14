@@ -5,7 +5,9 @@ public class ForTest01 {
 		
 		int sum = 0;
 		
-		// for(초기화;조건식;증감)
+		// for(1. 초기화; 2. 조건식; 4. 증감){
+		//	3. 구문
+		//}
 		for(int i=1; i<=100; i++) {
 			if(i%4 == 0) sum += i;
 		}
