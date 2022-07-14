@@ -1,5 +1,5 @@
 
-public class OperatorTest03 {
+public class OperatorTest {
 	public static void main(String[] args) {
 		int num = 10;
 		
