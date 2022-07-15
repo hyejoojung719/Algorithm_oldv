@@ -1,4 +1,4 @@
-package Test2;
+package contents;
 
 public class ForTest02 {
 

@@ -1,4 +1,4 @@
-package Test2;
+package contents;
 
 public class PrimitiveTest {
 	public static void main(String[] args) {
