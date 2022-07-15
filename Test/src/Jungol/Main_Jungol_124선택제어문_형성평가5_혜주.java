@@ -1,4 +1,4 @@
-package Algo;
+package Jungol;
 import java.util.Scanner;
 
 public class Main_Jungol_124선택제어문_형성평가5_혜주 {

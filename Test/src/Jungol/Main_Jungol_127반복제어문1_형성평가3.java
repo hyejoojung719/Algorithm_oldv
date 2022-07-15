@@ -1,4 +1,4 @@
-package Algo;
+package Jungol;
 
 import java.util.Scanner;
 
