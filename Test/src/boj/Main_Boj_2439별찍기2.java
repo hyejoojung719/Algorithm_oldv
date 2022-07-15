@@ -1,7 +1,7 @@
 package boj;
 import java.util.Scanner;
 
-public class Main_Boj_2439º°Âï±â2 {
+public class Main_Boj_2439ë³„ì°ê¸°2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
