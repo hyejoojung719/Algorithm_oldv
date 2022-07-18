@@ -1,7 +1,7 @@
 package jungol;
 import java.util.Scanner;
 
-public class Main_Jungol_124¼±ÅÃÁ¦¾î¹®_Çü¼ºÆò°¡5_ÇıÁÖ {
+public class Main_Jungol_124ì„ íƒì œì–´ë¬¸_í˜•ì„±í‰ê°€5_í˜œì£¼ {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 
