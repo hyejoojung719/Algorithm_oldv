@@ -15,6 +15,10 @@ public class WaterStrider {
 		// 어떤 소금쟁이 시작 위치가 이미 뛰었던 곳 -> 그 소금쟁이 번호 출력
 		// 같은 자리 뛴 소금쟁이가 없다면 0...
 		
+		// 조건 : 1. 경계 체크 -> 2. 밟았던 발판인지 체크
+		// 밟았던 칸을 띈 소금쟁이 있다면 번호 출력
+		// 없다면 0 출력
+		
 		Scanner sc = new Scanner(System.in);
 		
 		int test_case = sc.nextInt();
@@ -26,7 +30,7 @@ public class WaterStrider {
 			boolean[][] check = new boolean[n][n];
 			int answer = 0;
 			
-			out: for(int i=1; i<=strider; i++) {
+			for(int i=1; i<=strider; i++) {
 				int col = sc.nextInt();
 				int row = sc.nextInt(); 
 				int dir = sc.nextInt();
