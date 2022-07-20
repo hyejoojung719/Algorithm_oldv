@@ -31,6 +31,10 @@ public class DailyHomework2029 {
 		
 		// 조건 1 : 원소가 1일 때 -> 좌우상하 거리 측정 
 		// 조건 2 : 경게선 벗어나지 않도록 탐색
+		
+		
+		// 가로, 세로 각각 for문으로해도 좋당!
+		
 		int max = Integer.MIN_VALUE;
 		for(int i=0; i<n; i++) {
 			for(int j=0; j<n; j++) {
