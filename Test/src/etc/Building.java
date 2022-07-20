@@ -1,5 +1,5 @@
 package etc;
- 
+  
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
