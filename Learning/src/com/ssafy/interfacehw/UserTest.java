@@ -29,7 +29,7 @@ public class UserTest {
 		System.out.println(um.getAgeAvg());
 		
 		// UserManager 2개가 같은 인스턴스를 참조하는지 검사
-		System.out.println(um == um2);
+		System.out.println(um == um2); // compareTo, equal 가능
 		
 	}
 
