@@ -3,7 +3,9 @@ package boj.String;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+<<<<<<< HEAD
 import java.util.Comparator;
+
 
 public class Main1339 {
 	public static void main(String[] args) throws Exception{
@@ -11,6 +13,7 @@ public class Main1339 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int N = Integer.parseInt(br.readLine());
+
 			
 		Integer[] arr = new Integer[26]; 
 		
@@ -34,5 +37,6 @@ public class Main1339 {
 		}
 		
 		System.out.println(sum);
+
 	}
 }
