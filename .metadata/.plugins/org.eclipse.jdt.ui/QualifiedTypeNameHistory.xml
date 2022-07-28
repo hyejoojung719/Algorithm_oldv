@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.lang.Override"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="etc.MathFunction"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="org.xml.sax.helpers.DefaultHandler"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="com.ssafy.saxparsing.Weather"/>
+<fullyQualifiedTypeName name="javax.xml.parsers.SAXParserFactory"/>
+<fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.IProductManager"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.ReviewNotFoundException"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.NameNotFoundException"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.Refrigerator"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.ProductManagerImpl"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.Product"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.QuantityException"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.ProductCodeNotFoundException"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.ssafy.exceptionhw.Review"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 </qualifiedTypeNameHistroy>
