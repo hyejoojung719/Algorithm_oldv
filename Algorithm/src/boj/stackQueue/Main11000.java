@@ -36,11 +36,10 @@ public class Main11000 {
 			System.out.println(1);
 			System.exit(0);
 		}
-		
+		                
 		for(int i=1; i<N; i++) {
 			if(clas[i][0] < q.peek()) {
 				cnt++;
-				System.out.println(cnt);
 			}else if(clas[i][0] >= q.peek()){
 				q.poll();
 			}
