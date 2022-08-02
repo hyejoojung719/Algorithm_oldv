@@ -8,47 +8,71 @@ public class Solution_1954_달팽이숫자_정혜주 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		int test_case = Integer.parseInt(br.readLine());
-		for(int tc=0; tc<test_case; tc++) {
+		for(int tc=1; tc<=test_case; tc++) {
 			int N = Integer.parseInt(br.readLine());
 			int[][] snail = new int[N][N];
-			
-			// N*N까지 입력
-			// 3 2 2 1 1
-			// 4 3 3 2 2 1 1 
-			// 5 4 4 3 3 2 2 1 1
 			
 			int x = 0;
 			int y = 0;
 			int num = 1;
-			while(x>=0 && x<N && y>=0 && y<N) {
-				if(snail[x][y]==0) snail[x][y]=num;
-				else break;
-				y++;
-				num++;
-			}
-			x++;
-			// (x,y) = (0,2)
-			while(x>=0 && x<N && y>=0 && y<N) {
-				if(snail[x][y]==0) snail[x][y]=num;
-				else break;
+			
+			for(int i=0; i<N/2+1; i++) {
+				// 오른쪽 가로
+				while(true) {
+					if(y<N && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						y -= 1;
+						break;
+					}
+					num++; y++;
+				}
 				x++;
-				num++;
-			}
-			y--;
-			// (x,y) = (2,2)
-			while(x>=0 && x<N && y>=0 && y<N) {
-				if(snail[x][y]==0) snail[x][y]=num;
-				else break;
+				
+				// 아래쪽 세로
+				while(true) {
+					if(x<N && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						x -= 1;
+						break;
+					}
+					num++; x++;
+				}
 				y--;
-				num++;
-			}
-			x--;
-			// (x,y) = (2,0)
-			while(x>=0 && x<N && y>=0 && y<N) {
-				if(snail[x][y]==0) snail[x][y]=num;
-				else break;
+				
+				// 왼쪽 가로
+				while(true) {
+					if(y>=0 && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						y += 1;
+						break;
+					}
+					num++; y--;
+				}
 				x--;
-				num++;
+				
+				// 위쪽 세로
+				while(true) {
+					if(x>=0 && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						x += 1;
+						break;
+					}
+					num++; x--;
+				}
+				y++;
+			}
+			
+			System.out.println("#" + tc);
+			// 확인
+			for(int[] col : snail) {
+				for(int row : col) {
+					System.out.print(row + " ");
+				}
+				System.out.println();
 			}
 		}
 	}
