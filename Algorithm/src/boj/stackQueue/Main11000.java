@@ -38,16 +38,11 @@ public class Main11000 {
 		}
 		
 		for(int i=1; i<N; i++) {
-			System.out.println("시작 시간 = "+clas[i][0]);
-			System.out.println("가장 빠른 종료 시간 = "+q.peek());
 			if(clas[i][0] < q.peek()) {
-				System.out.print("cnt 증가 "+ cnt + " -> ");
 				cnt++;
 				System.out.println(cnt);
 			}else if(clas[i][0] >= q.peek()){
-				System.out.print("cnt 유지"+ cnt );
 				q.poll();
-				System.out.println("가장 빠른 종료시간 변경 = "+q.peek());
 			}
 		}
 		
