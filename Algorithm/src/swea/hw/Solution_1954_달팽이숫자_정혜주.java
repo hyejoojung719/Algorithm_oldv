@@ -12,55 +12,65 @@ public class Solution_1954_달팽이숫자_정혜주 {
 			int N = Integer.parseInt(br.readLine());
 			int[][] snail = new int[N][N];
 			
-			// N*N까지 입력
-			// 3 2 2 1 1
-			// 4 3 3 2 2 1 1 
-			// 5 4 4 3 3 2 2 1 1
-			
 			int x = 0;
 			int y = 0;
 			int num = 1;
-		
+			
 			for(int i=0; i<N/2+1; i++) {
-				while(x>=0 && x<N && y>=0 && y<N) {
-					if(snail[x][y]==0) snail[x][y]=num;
-					else break;
-					y++;
-					num++;
+				// 오른쪽 가로
+				while(true) {
+					if(y<N && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						y -= 1;
+						break;
+					}
+					num++; y++;
 				}
-				
 				x++;
-				// (x,y) = (0,2)
-				while(x>=0 && x<N && y>=0 && y<N) {
-					if(snail[x][y]==0) snail[x][y]=num;
-					else break;
-					x++;
-					num++;
-				}
 				
+				// 아래쪽 세로
+				while(true) {
+					if(x<N && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						x -= 1;
+						break;
+					}
+					num++; x++;
+				}
 				y--;
-				// (x,y) = (2,2)
-				while(x>=0 && x<N && y>=0 && y<N) {
-					if(snail[x][y]==0) snail[x][y]=num;
-					else break;
-					y--;
-					num++;
+				
+				// 왼쪽 가로
+				while(true) {
+					if(y>=0 && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						y += 1;
+						break;
+					}
+					num++; y--;
 				}
 				x--;
-				// (x,y) = (2,0)
-				while(x>=0 && x<N && y>=0 && y<N) {
-					if(snail[x][y]==0) snail[x][y]=num;
-					else break;
-					x--;
-					num++;
+				
+				// 위쪽 세로
+				while(true) {
+					if(x>=0 && snail[x][y]==0) {
+						snail[x][y] = num;
+					}else {
+						x += 1;
+						break;
+					}
+					num++; x--;
 				}
+				y++;
 			}
 			
-			
-			System.out.println("#"+tc);
-			for(int[] i : snail) {
-				for(int j : i) {
-					System.out.print(j + " ");
+			System.out.println("#" + tc);
+			// 확인
+			for(int[] col : snail) {
+				for(int row : col) {
+					System.out.print(row + " ");
 				}
 				System.out.println();
 			}
