@@ -16,7 +16,7 @@ public class Main_2164_카드2_정혜주 {
 		
 		Queue<Integer> q = new LinkedList<>();
 		for(int i=1; i<=N; i++) {
-			q.add(i);
+			q.add(i); // add보다 offer
 		}
 		
 		while(true) {
@@ -24,8 +24,9 @@ public class Main_2164_카드2_정혜주 {
 			if(q.size()==1) break;
 			
 			q.poll();
-			int last = q.poll();
-			q.add(last);
+//			int last = q.poll();
+//			q.add(last);
+			q.add(q.poll()); // 이게 더 깔끔
 		}
 		
 		System.out.println(q.peek());
