@@ -15,6 +15,5 @@ INDEX VERSION 1.131+C:\Users\fixup\Desktop\SsafyLearn\.metadata\.plugins\org.ecl
 3981215296.index
 3421848420.index
 2792254283.index
-2975814660.index
 788392666.index
 1593856350.index

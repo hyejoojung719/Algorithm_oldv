@@ -72,7 +72,5 @@ public class Main_13335_트럭_정혜주 {
 		}
 
 		System.out.println(time);
-
-
 	}
 }

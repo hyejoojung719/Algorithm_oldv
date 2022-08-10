@@ -113,7 +113,7 @@ public class Solution_1861_정사각형방_정혜주 {
 				
 			}
 			
-			Arrays.sort(cntArr);
+//			Arrays.sort(cntArr);
 			
 
 		}
