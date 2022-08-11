@@ -1,7 +1,7 @@
 package boj;
 import java.util.Scanner;
 
-public class Main_Boj_2439별찍기2 {
+public class Main_2439_별찍기2_정혜주 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		

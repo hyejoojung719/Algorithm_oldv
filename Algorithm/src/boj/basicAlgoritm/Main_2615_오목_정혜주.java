@@ -1,8 +1,8 @@
-package boj;
+package boj.basicAlgoritm;
 
 import java.util.Scanner;
 
-public class Main_Boj_2615오목 {
+public class Main_2615_오목_정혜주 {
 	public static void main(String[] args) throws Exception {
 		Scanner s = new Scanner(System.in);
 

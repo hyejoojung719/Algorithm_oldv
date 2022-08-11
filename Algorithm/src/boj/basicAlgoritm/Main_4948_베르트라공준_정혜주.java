@@ -1,9 +1,9 @@
-package boj;
+package boj.basicAlgoritm;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main_Boj_4948 {
+public class Main_4948_베르트라공준_정혜주 {
 	public static ArrayList<Integer> cnt = new ArrayList<>();
 	public static boolean[] prime;
 	public static void get_prime(int num) {

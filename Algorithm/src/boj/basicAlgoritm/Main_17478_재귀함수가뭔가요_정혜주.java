@@ -1,9 +1,9 @@
-package boj.hw;
+package boj.basicAlgoritm;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Main_BJ_17478_재귀함수가뭔가요_정혜주 {
+public class Main_17478_재귀함수가뭔가요_정혜주 {
 
 	// 1. 반복 -> 자기자신호출(언제)
 	// 2. 언제까지 반복

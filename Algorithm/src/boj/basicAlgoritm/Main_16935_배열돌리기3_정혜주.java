@@ -1,4 +1,4 @@
-package boj.hw;
+package boj.basicAlgoritm;
 
 import java.io.BufferedReader;
 import java.io.IOException;

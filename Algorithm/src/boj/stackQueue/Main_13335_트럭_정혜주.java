@@ -40,34 +40,29 @@ public class Main_13335_트럭_정혜주 {
 
 		// 트럭이 나가면서 빈 무게가 다음 트럭이들어올 수 있는 경우도 생각해야함 
 		Queue<Integer> time_q = new LinkedList<>();
-
-		int time=2;
-		int weight=0;
-		int check = 1;
-		weight = truck_q.peek();
-		time_q.add(truck_q.poll());
+		for (int i = 0; i < length_w; i++) {
+			time_q.offer(0); // 0 0
+		}
+		
+		int time=0;
+		int cur_length = 0;
+		int check;
+		
 		while(!time_q.isEmpty()) {
-			if(!truck_q.isEmpty() && check < length_w
-					&& weight + truck_q.peek() <= bridgeWeight_l) {
-				weight += truck_q.peek(); 
-				time_q.offer(truck_q.poll());
-				check++;
+			while (!truck_q.isEmpty()) {
+				check = truck_q.peek();
+				cur_length += check - time_q.poll();
+				if (cur_length > bridgeWeight_l ) {
+					time_q.offer(0);
+					cur_length -= check;
+				} else {
+					time_q.offer(check);
+					truck_q.poll();
+				}
 				time++;
-			}else if(check < length_w){
-				time_q.offer(0);
-				check++;
-				time++;
 			}
-			
-			// 시간 측정을 위한 큐가 다리길이만큼 트럭이 꽉차면 하나 뺴주고 그 무게를 전체 무게에서 빼줌
-			if(check==length_w) {
-				weight -= time_q.poll();
-				check--;
-			}
-			
-			if(truck_q.size()==0 && time_q.size()<=1 && time_q.peek()==0) {
-				time_q.poll();
-			}
+			time++;
+			time_q.poll();
 			
 		}
 
