@@ -31,7 +31,7 @@ public class Combination {
 			// 요소 선택
 			result[cnt] = arr[i];
 
-			comb(cnt+1, start+1, r);
+			comb(cnt+1, i+1, r);
 		}
 	}
 
