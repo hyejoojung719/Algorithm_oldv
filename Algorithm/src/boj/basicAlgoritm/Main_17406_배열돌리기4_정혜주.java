@@ -3,9 +3,14 @@ package boj.basicAlgoritm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main_17406_배열돌리기4_정혜주 {
+	
+	// c-i<=열의 경계<=c+i
+	// r-i<=행의 경계<=r+i
+	
 	static int N, M, R;
 	static boolean[] isSelected;
 	static int[][] arr;
@@ -17,14 +22,24 @@ public class Main_17406_배열돌리기4_정혜주 {
 	static int[] delRow = {0, 1, 0, -1}; // 우 하 좌 상
 	// 열 델타
 	static int[] delCol = {1, 0, -1, 0}; // 우 하 좌 상
-	static int min = Integer.MIN_VALUE;
-	static int answer = Integer.MIN_VALUE;
+	static int min = Integer.MAX_VALUE;
+	static int answer = Integer.MAX_VALUE;
 
+	public static void copyArray() {
+		copyArr = new int[N][M];
+		for(int i=0; i<N; i++) {
+			for(int j=0; j<M; j++) {
+				copyArr[i][j] = arr[i][j];
+			}
+		}
+	}
 
 
 	public static void move(int r, int c, int s) {
-		N = 2*s+1;
-		M = 2*s+1;	
+		int tmpN = N;
+		int tmpM = M;
+		tmpN = 2*s+1;
+		tmpM = 2*s+1;	
 		for(int j=0;  j<Math.min(N, M)/2; j++) {
 			int row = r-s-1+1*j;
 			int col = c-s-1+1*j;
@@ -53,7 +68,7 @@ public class Main_17406_배열돌리기4_정혜주 {
 		
 		if(cnt==R) {
 
-			copyArr = arr.clone();
+			copyArray();
 			
 			for(int i=0; i<R; i++) {
 				r = cal[permArr[i]][0];
@@ -63,7 +78,7 @@ public class Main_17406_배열돌리기4_정혜주 {
 			}
 			
 			int sum=0;
-			for(int[] row : arr) {
+			for(int[] row : copyArr) {
 				for(int col : row) {
 					sum += col;
 				}
@@ -76,7 +91,7 @@ public class Main_17406_배열돌리기4_정혜주 {
 		}
 
 		// 가능한 모든 수에 대해 시도
-		for(int i = 1; i <= R; i++) {	// 선택지
+		for(int i = 0; i < R; i++) {	// 선택지
 			// 시도하는 수가 선택되었는지 판단
 			if(isSelected[i]) continue;
 			isSelected[i] = true;
