@@ -21,7 +21,7 @@ public class Main_2606_바이러스_정혜주 {
 			}
 		}
 	}
-	
+	...
 	public static void main(String[] args) throws Exception{
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
