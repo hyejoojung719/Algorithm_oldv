@@ -8,6 +8,7 @@ public class Combination {
 	static int N = 5;
 	static int R = 3;
 	static int[] result;
+	static boolean[] isVisited;
 
 //	static int[] result = new int[R];	// 뽑을 요소를 담을 배열
 
@@ -44,7 +45,7 @@ public class Combination {
 		}
 
 
-		//		comb(0,0);
+//		comb(0,0);
 
 /*
 		// 반복문으로 짜보기
