@@ -19,7 +19,6 @@ public class Main_1260_DfS와BFS_정혜주 {
 		}
 	}
 	
-	// 큐에 넣어준다.  ==> 여기는 풀이 참고함
 	public static void bfs(int v) {
 		isVisited[v] = true;
 		System.out.print(v + " ");
@@ -43,10 +42,6 @@ public class Main_1260_DfS와BFS_정혜주 {
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-		
-//		 String jinho = "사랑해";
-//		 String hyejoo = "혜주야";
-//		 System.out.print(jinho + " " + hyejoo);
 		
 		st = new StringTokenizer(br.readLine(), " ");
 		

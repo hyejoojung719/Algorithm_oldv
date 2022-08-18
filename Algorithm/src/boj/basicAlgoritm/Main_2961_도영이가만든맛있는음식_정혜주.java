@@ -9,13 +9,20 @@ public class Main_2961_도영이가만든맛있는음식_정혜주 {
 	
 	static boolean[] check;
 	static int[] sArr, bArr;
-	static int answer;
+	static int answer = Integer.MAX_VALUE;
 	
 	private static void subSet(int cnt) {
 		if(cnt == check.length) {
-//			System.out.println(Arrays.toString(check));
-			int diff = taste(check);
-			answer = Math.min(diff, answer);
+			// 공집합 제외 
+			int falseCnt = 0;
+			for(int i=0; i<cnt; i++) {
+				if(!check[i]) falseCnt++;
+			}
+			if(falseCnt != cnt) {
+				int diff = taste(check);
+				answer = Math.min(diff, answer);
+			}
+			
 			return;
 		}
 		
@@ -30,14 +37,13 @@ public class Main_2961_도영이가만든맛있는음식_정혜주 {
 		
 		int size=check.length;
 		
-		int sTaste=0, bTaste=0;
+		int sTaste=1, bTaste=0;
 		for(int i=0; i<size; i++) {
 			if(check[i]) {
-				sTaste += sArr[i];
+				sTaste *= sArr[i];
 				bTaste += bArr[i];
 			}
 		}
-		
 		int diff = Math.abs(sTaste-bTaste);
 		return diff;
 	}
@@ -60,6 +66,6 @@ public class Main_2961_도영이가만든맛있는음식_정혜주 {
 		
 		check = new boolean[N];
 		subSet(0);
-		
+		System.out.println(answer);
 	}
 }
