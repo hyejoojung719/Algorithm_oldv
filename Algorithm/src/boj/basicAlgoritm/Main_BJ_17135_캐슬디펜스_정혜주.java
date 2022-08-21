@@ -14,6 +14,7 @@ public class Main_BJ_17135_캐슬디펜스_정혜주 {
 	static int enemy; // 전체 적의 수
 	static Queue<int[]> enemy_q = new LinkedList<>();
 	static boolean[] archer_spot;
+	static int[][] willdie;
 	
 	
 	public static void comb(int cnt, int start) {
@@ -40,23 +41,21 @@ public class Main_BJ_17135_캐슬디펜스_정혜주 {
 				
 			}
 		}
-		
-		for(int i=0; i<size; i++) {
-			int e_row = enemy_q.peek()[0];
-			int e_col = enemy_q.peek()[1];
-			
-			
-		}
 	}
 	
 	public static void main(String[] args) throws Exception{
 		
 		// 1. 궁수는 성이 있는 칸(N+1, ?)에 있을 수 있다 => 총 3명 -> row값은 N으로 고정(인덱스 0부터 시작할 경우)
 				// ex) M칸 중 3칸 -> 조합(전체=M, 뽑을개수=3)
-		// 3. 적의 좌표를 큐에 담고 거리를 비교한다. -> 시간복잡도를 생각하자!!
+		// 2. 4번 돌면서 => bfs로 탐색하면서 먼저 거리 안에 있는 애들 중 가장 가까운애들
+				// 후보 배열에 담기=> int[][] willdie -> 좌표 담고
+		// 3. willdie 배열에서 가장 왼쪽에 있는애 죽이고(나머지 애들은 다시 큐에 넣기->넣을때 row+1하고 넣기 -> 만약 row+1한 값이 N보다 크면 offer금지) -> enemy--;
+				// 가장 왼쪽이 우선이므로 델타는 좌 상 우 순...
+		
+		// 4. 적의 좌표를 큐에 담고 거리를 비교한다. -> 시간복잡도를 생각하자!!
 				// 먼저 큐 사이즈를 변수로 받고, 그 사이즈만큼 for문을 돌린다. 
 				// - 적의 전체 수 enemy = 큐 사이즈
-				// - 거리 <= d 이면, 큐에서 poll 해주고 다시 넣지 않음, enemy--;
+				// - 거리 <= d 이면, 큐에서 poll 해주고 willdie 배열에 담기
 				// - 거리>d 이면, 큐에서 poll 한걸 다시 offer(여기서 row+1하고 넣기 -> 만약 row+1한 값이 N보다 크면 offer금지)
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
