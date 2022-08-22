@@ -2,27 +2,20 @@ package boj.bfsDfs;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_1260_DfS와BFS_정혜주 {
+public class Main_1260_DfS와BFS_정혜주_인접행렬 {
 	static int n, m, v;
+	static boolean[][] graph;
 	static boolean[] isVisited;
-	static List<Integer>[] list;
-	
 	
 	public static void dfs(int v) {
 		isVisited[v] = true;
 		System.out.print(v + " ");
-		
 		for(int i=1; i<=n; i++) {
-			if(list[v].contains(i) && !isVisited[v]) {
-				dfs(i);
-			}
+			if(graph[v][i]==true && !isVisited[i]) dfs(i);
 		}
 	}
 	
@@ -35,8 +28,8 @@ public class Main_1260_DfS와BFS_정혜주 {
 		
 		while(!q.isEmpty()) {
 			int temp = q.poll();
-			for(int i=1; i<=n; i++) {
-				if(list[v].contains(i) && !isVisited[i]) {
+			for(int i=0; i<=n; i++) {
+				if(graph[temp][i]==true && !isVisited[i]) {
 					isVisited[i] = true;
 					q.offer(i);
 					System.out.print(i + " ");
@@ -56,32 +49,19 @@ public class Main_1260_DfS와BFS_정혜주 {
 		m = Integer.parseInt(st.nextToken());
 		v= Integer.parseInt(st.nextToken());
 		
-		
-		list = new List[n+1];
-		
-		for(int i = 1; i <= n;i++) {
-			list[i] = new ArrayList<Integer>();
-		}
-		
+		graph = new boolean[n+1][n+1];
 		for(int i=0; i<m; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			
-			list[a].add(b);
-			list[b].add(a);
+			graph[a][b] = graph[b][a] = true;
 		}
-		
-		for(int i=1; i<=n; i++) {
-			Collections.sort(list[i]);
-		}
-		// Arrays.sort, Collections.sort
 		
 		isVisited = new boolean[n+1];
 		dfs(v);
 		System.out.println();
 		isVisited = new boolean[n+1];
-//		bfs(v);
+		bfs(v);
 		
 	}
 }

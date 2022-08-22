@@ -7,79 +7,170 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_BJ_17135_캐슬디펜스_정혜주 {
-	
+	// 틀렸지만, 일단 제출해봅니다.. (반례 찾는 중이에요..ㅜㅜ)
+
 	static int N,M,D;
 	static int R = 3; // 궁수 수
 	static int[][] board;
-	static int enemy; // 전체 적의 수
-	static Queue<int[]> enemy_q = new LinkedList<>();
-	static boolean[] archer_spot;
-	static int[][] willdie;
-	
-	
+	static int[][] copy_board;
+	static int[][] archer_spot = new int[3][2];
+	static int[][] deltas = {{0,-1}, {-1,0}, {0,1}};	// 좌, 상, 우 -> 왼쪽 우선이니까
+	static Queue<int[]> willdie_enemy;
+	static boolean[][] isVisited;
+	static int died_enemy, answer=Integer.MIN_VALUE;
+
+
 	public static void comb(int cnt, int start) {
 		// 5칸 중 3칸을 뽑음
-		
+
 		if(cnt==R) {
-			attack(archer_spot);
+			died_enemy = 0 ;
+//			System.out.println("궁수위치 ");
+//			for(int[] x : archer_spot) {
+//				System.out.print(x[1]+" ");
+//			}
+//			System.out.println();
+			copyBoard();
+			while(check_enemy()!=0) {
+				target(); 
+				attack();
+//				
+//				System.out.println("========");
+//				for(int[] x : copy_board) {
+//					for(int y : x) {
+//						System.out.print(y+" ");
+//					}
+//					System.out.println();
+//				}
+			}
+//			System.out.println("죽인 적 :" + died_enemy);
+			answer = Math.max(answer, died_enemy);
+			return;
 		}
-		
+
 		for(int i=start; i<M; i++) {
-			archer_spot[i] = true;
+			archer_spot[cnt][0] = N;
+			archer_spot[cnt][1] = i;
 			comb(cnt+1, i+1);
-			archer_spot[i] = false;
 		}
 	}
 	
-	public static void attack(boolean[] archer_spot) {
-		int size = enemy_q.size();	
-		enemy = size;	// 현재 적의 수
+	public static void copyBoard() {
+		copy_board = new int[N+1][M];
 		
-		// 궁수 위치 
-		for(int i=0, len=archer_spot.length; i<len; i++) {
-			if(archer_spot[i]) {
-				
+		for(int i=0; i<N+1; i++) {
+			for(int j=0; j<M; j++) {
+				copy_board[i][j] = board[i][j];
 			}
 		}
 	}
 	
-	public static void main(String[] args) throws Exception{
+	public static int check_enemy() {
+		int cnt =0;
+		for(int[] x : copy_board) {
+			for(int y : x) {
+				if(y==1) cnt++;
+			}
+		}
+		return cnt;
+	}
+	
+	public static int attack() {
+		while(!willdie_enemy.isEmpty()) {
+			// 죽일 적들이 사라질 때 까지...
+//			System.out.println("죽일 애들 좌표 : "+ willdie_enemy.peek()[0] + " : " + willdie_enemy.peek()[1]);
+			int erow = willdie_enemy.peek()[0];
+			int ecol = willdie_enemy.poll()[1];
+			
+			copy_board[erow][ecol] = 0;
+			died_enemy++;
+		}
 		
-		// 1. 궁수는 성이 있는 칸(N+1, ?)에 있을 수 있다 => 총 3명 -> row값은 N으로 고정(인덱스 0부터 시작할 경우)
-				// ex) M칸 중 3칸 -> 조합(전체=M, 뽑을개수=3)
-		// 2. 4번 돌면서 => bfs로 탐색하면서 먼저 거리 안에 있는 애들 중 가장 가까운애들
-				// 후보 배열에 담기=> int[][] willdie -> 좌표 담고
-		// 3. willdie 배열에서 가장 왼쪽에 있는애 죽이고(나머지 애들은 다시 큐에 넣기->넣을때 row+1하고 넣기 -> 만약 row+1한 값이 N보다 크면 offer금지) -> enemy--;
-				// 가장 왼쪽이 우선이므로 델타는 좌 상 우 순...
-		
-		// 4. 적의 좌표를 큐에 담고 거리를 비교한다. -> 시간복잡도를 생각하자!!
-				// 먼저 큐 사이즈를 변수로 받고, 그 사이즈만큼 for문을 돌린다. 
-				// - 적의 전체 수 enemy = 큐 사이즈
-				// - 거리 <= d 이면, 큐에서 poll 해주고 willdie 배열에 담기
-				// - 거리>d 이면, 큐에서 poll 한걸 다시 offer(여기서 row+1하고 넣기 -> 만약 row+1한 값이 N보다 크면 offer금지)
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		
-		st = new StringTokenizer(br.readLine(), " ");
-		N = Integer.parseInt(st.nextToken());	// 행 길이
-		M = Integer.parseInt(st.nextToken());	// 열 길이
-		D = Integer.parseInt(st.nextToken());	// 거리 제한
-		
-		board = new int[N][M];
-		for(int i=0; i<N; i++) {
-			st = new StringTokenizer(br.readLine(), " ");
-			for (int j = 0; j < M; j++) {
-				board[i][j] = Integer.parseInt(st.nextToken());
-				
-				if(board[i][j]==1) {
-					enemy_q.offer(new int[] {i, j});
+		// 궁수의 공격이 끝나면 적이 아래로 한 칸 이동해야함...
+		for(int i=N-2; i>=0; i--) { // 궁수들이 위치한 행과 캐슬 직전행은 제외하고 생각
+			for(int j=0; j<M; j++) {
+				if(copy_board[i][j]==1) {
+					copy_board[i][j] = 0;
+					copy_board[i+1][j] = 1;
+				}else {
+					copy_board[i+1][j] = 0;
 				}
 			}
 		}
 		
+//		System.out.println("현재까지 죽인 적 :" + died_enemy);
 		
-		archer_spot = new boolean[M];
+		return died_enemy;
+	}
+
+	public static void target() {	// bfs로 타겟들 설정하기
+		// 죽일 적들 좌표를 담음
+		willdie_enemy = new LinkedList<>();
+		isVisited = new boolean[N+1][M];
+		Queue<int[]> q;
+
+		for(int i=0; i<3; i++) {	// 궁수는 3명이니까..
+			int arow = archer_spot[i][0];
+			int acol = archer_spot[i][1];
+			q  = new LinkedList<>();
+			q.offer(new int[] {arow, acol});
+
+			wh : while(!q.isEmpty()) {
+				int[] temp = q.poll();
+				int nrow = temp[0];
+				int ncol = temp[1];
+				
+				for(int dir=0; dir<3; dir++) {
+					int mrow = nrow + deltas[dir][0];
+					int mcol = ncol + deltas[dir][1];
+					
+					if(0<=mrow && mrow<N && 0<=mcol && mcol<M) {
+						int dis = Math.abs(arow-mrow) + Math.abs(acol-mcol);
+						if(dis <= D) {
+							if(copy_board[mrow][mcol]==1) {
+								if(!isVisited[mrow][mcol]) {	// 방문한 적 이 없는 적이라면..
+									willdie_enemy.offer(new int[] {mrow, mcol});
+									isVisited[mrow][mcol] = true;
+								}
+								break wh;
+							}else if(!isVisited[mrow][mcol]){
+								q.offer(new int[] {mrow, mcol});
+								isVisited[mrow][mcol] = true;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public static void main(String[] args) throws Exception{
+
+		// 1. 궁수는 성이 있는 칸(N+1, ?)에 있을 수 있다 => 총 3명 -> row값은 N으로 고정(인덱스 0부터 시작할 경우)
+		// ex) M칸 중 3칸 -> 조합(전체=M, 뽑을개수=3)
+		// 2. 3번 돌면서 => bfs로 탐색하면서 먼저 거리 안에 있는 애들 중 가장 가까운애들 찾기 -> willdie배열에 좌표 담기..?
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		st = new StringTokenizer(br.readLine(), " ");
+		N = Integer.parseInt(st.nextToken());	// 행 길이
+		M = Integer.parseInt(st.nextToken());	// 열 길이
+		D = Integer.parseInt(st.nextToken());	// 거리 제한
+
+		board = new int[N+1][M];
+		for(int i=0; i<N; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			for (int j = 0; j < M; j++) {
+				board[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+		// 궁수 자리는 0으로 셋팅
+		for(int i=0; i<M; i++) {
+			board[N][i] = 0;
+		}
+
 		comb(0,0);
+		System.out.println(answer);
 	}
 }
