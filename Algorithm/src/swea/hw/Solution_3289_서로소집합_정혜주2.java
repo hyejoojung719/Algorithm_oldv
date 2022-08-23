@@ -32,8 +32,9 @@ public class Solution_3289_서로소집합_정혜주2 {
 			m = Integer.parseInt(st.nextToken());
 			
 			linked_list = new LinkedList<>();
-			for(int i=0; i<n; i++) {
-				linked_list.add(new Node(i+1, 0));
+			linked_list.add(new Node(0, 0));
+			for(int i=1; i<=n; i++) {
+				linked_list.add(new Node(i, i));
 			}
 			
 			for(int i=0; i<m; i++) {
@@ -45,7 +46,7 @@ public class Solution_3289_서로소집합_정혜주2 {
 				if(cal==1) {
 					
 				}else {
-					linked_list.set(set2-1, new Node(set2,set1-1));
+					linked_list.set(set2, new Node(set2,set1));
 				}
 			}
 			
