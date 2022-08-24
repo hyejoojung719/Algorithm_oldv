@@ -19,6 +19,9 @@ public class Solution_3289_서로소집합_정혜주2 {
 		}
 	}
 	
+//	public static int findSet(int set1, int set2) {
+//	}
+//	
 	public static void main(String[] args) throws Exception{
 		// 0 : 집합 합치기
 		// 1 : 같은 집합인지 확인 -> 결과값 출력
@@ -44,7 +47,7 @@ public class Solution_3289_서로소집합_정혜주2 {
 				int set2 = Integer.parseInt(st.nextToken());
 				
 				if(cal==1) {
-					
+//					findSet(set1, set2);
 				}else {
 					linked_list.set(set2, new Node(set2,set1));
 				}
