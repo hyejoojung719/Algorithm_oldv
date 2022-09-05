@@ -4,7 +4,7 @@ import java.io.*;
 public class DAEJEON02_JAVA {
 
 	// 닉네임을 사용자에 맞게 변경해 주세요.
-	static final String NICKNAME = "DAEJEON02_JAVA";
+	static final String NICKNAME = "DAEJEON07_JUNGHYEJOO";
 	
 	// 일타싸피 프로그램을 로컬에서 실행할 경우 변경하지 않습니다.
 	static final String HOST = "127.0.0.1";
