@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script>
+		let xhr = null;
+		function sendRequest(method, url, params, callback){
+			// 객체 생성
+			xhr = new XMLHttpRequest;
+			
+			// 옵션 설정
+			// xhr.open(메소드, url, 동기/비동기);
+			// true - 비동기, flase - 동기
+			xhr.open(method, url, true);
+			//xhr.open(method, url, false);
+			// get이면 url에 ?붙이고 넣기
+			// post라면 아래 send에 데이터 넣기]
+			
+			// body에 담길 content 타입 지정
+			// get요청이면 아래는 필요X
+			// xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+			
+			// readystate 변경 시 실행 될 콜백 함수 지정
+			xhr.onreadystatechange = callback
+			
+			// 요청 보내기 
+			xhr.send(method=="post"?params:null)
+			
+		}
+		
+		window.onload = function(){
+			
+			//console.log(id);
+			document.getElementById("login-btn-get")
+			.addEventListener("click", function(){
+				// id, pwd에 있는 정보를 가지고 서버에 요청 보내기
+				sendRequest("get", 
+						`/220907ajax/Main?id=${id.value}&pwd=${pw.value}`, 
+						null, 
+						function(){
+						if(xhr.readyState==4 && xhr.status==200){
+							console.log(xhr.responseText);
+							document.body.innerHTML = xhr.responseText;
+						}
+				});
+				
+				console.log("sendRequest() 메소드 이후"); // 비동기라서 얘가 먼저 됨
+				
+			}) 
+			
+			document.getElementById("login-btn-post").addEventListener("click", function(){
+				// id, pwd에 있는 정보를 가지고 서버에 요청 보내기
+				/*sendRequest("post", 
+						`/220907ajax/Main`, 
+						//JSON.stringify({id:id.value, pwd:pw.value}), 
+						`id=${id.value}&pwd=${pw.value}`,
+						function(){
+						if(xhr.readyState==4 && xhr.status==200){
+							console.log(xhr.responseText);
+							document.body.innerHTML = xhr.responseText;
+						}
+				});*/
+				
+				
+				let url = "/220907ajax/Main";
+				let data = `id=${id.value}&pwd=${pw.value}`;
+				fetch(url, {
+					method : "post",
+					headers : {
+						"Content-Type" : "application/x-www-form-urlencoded"
+					},
+					body : data
+				}).then(res=>res.text())
+				.then(data=>console.log(data));
+				
+				/*
+				let res = await fetch(url, {
+					method : "post",
+					headers : {
+						"Content-Type" : "application/x-www-form-urlencoded"
+					},
+					body : `id=${id.value}&pwd=${pw.value}`
+				})
+				let dat = await res.text();*/
+			}) 
+		}
+		
+	</script>
+</head>
+<body>
+	<form action="/220907ajax/Main" method="post" target="_blank">
+		<label for="id">아이디</label>
+		<input type="text" id="id" name="id">
+		<br>
+		<label for="pwd">비밀번호</label>
+		<input type="text" id="pw" name="pwd">
+		<br>
+		<input type="submit" value="로그인 요청 form 사용">
+		<input type="button" id="login-btn-get" value="로그인 요청 get">
+		<input type="button" id="login-btn-post" value="로그인 요청 post">
+	</form>
+	
+	<a href="/220907ajax/Main" target="_blank">요청</a>
+</body>
+</html>
