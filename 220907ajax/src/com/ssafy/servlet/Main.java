@@ -24,7 +24,7 @@ public class Main extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		
+			
 		// 쿼리 스트링 정보 추출
 		String queryString = request.getQueryString();
 		System.out.println("쿼리 스트링 정보 : " + queryString);
