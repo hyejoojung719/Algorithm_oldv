@@ -1,21 +1,19 @@
 package boj.study;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_6603_로또 {
+public class Main_6603_로또2 {
 	static int[] lottoNum;
 	static int N;
-	static boolean[] selected;
+	static int[] selected;
 	static StringBuilder sb;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringTokenizer st;
 		
 		while(true) {
@@ -33,32 +31,25 @@ public class Main_6603_로또 {
 				lottoNum[i] = Integer.parseInt(st.nextToken());
 			}
 			
-			selected = new boolean[N];
+			selected = new int[6];
 			comb(0,0);
-			sb.append("\n");
-			bw.write(sb.toString());
-			bw.flush();
-	        bw.close();
-	        br.close();
+			System.out.println(sb);
 		}
 	}
 	
 	private static void comb(int cnt, int start) {
 		
 		if(cnt == 6) {
-			for(int i=0; i<N; i++) {
-				if(selected[i]) {
-					sb.append(lottoNum[i] + " ");
-				}
+			for(int i=0; i<6; i++) {
+				sb.append(selected[i] + " ");
 			}
 			sb.append("\n");
 			return;
 		}
 		
 		for(int i=start; i<N; i++) {
-			selected[i] = true;
+			selected[cnt] = lottoNum[i];
 			comb(cnt+1, i+1);
-			selected[i] = false;
 		}
 	}
 }
