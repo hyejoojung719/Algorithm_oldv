@@ -1,4 +1,4 @@
-package swea.hw;
+package swea;
 
 public class Solution_6808_규영이와인영이의카드게임_정혜주 {
 	public static void main(String[] args) {
