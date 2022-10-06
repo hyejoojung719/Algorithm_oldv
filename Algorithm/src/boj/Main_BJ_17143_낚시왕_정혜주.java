@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_Bj_17143_낚시왕_정혜주 {
+public class Main_BJ_17143_낚시왕_정혜주 {
 	static int R, C, M;
 	
 	public static void main(String[] args) throws Exception{

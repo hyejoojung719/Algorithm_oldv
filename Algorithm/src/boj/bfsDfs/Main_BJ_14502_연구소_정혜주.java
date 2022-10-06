@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_14502_연구소_정혜주 {
+public class Main_BJ_14502_연구소_정혜주 {
 	static int N, M ;
 	static int[][] lab;
 	static int[][] copy_lab;

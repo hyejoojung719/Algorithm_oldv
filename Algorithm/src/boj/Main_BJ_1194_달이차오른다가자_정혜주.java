@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_Bj_1194_달이차오른다가자_정혜주 {
+public class Main_BJ_1194_달이차오른다가자_정혜주 {
 	static int N, M;
 	static char[][] map;
 	static int[][] deltas = {{-1,0},{1,0},{0,-1},{0,1}};
