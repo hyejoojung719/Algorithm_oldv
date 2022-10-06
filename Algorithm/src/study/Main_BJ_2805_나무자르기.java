@@ -9,11 +9,6 @@ public class Main_BJ_2805_나무자르기 {
 	static int[] arr;
 	
 	public static void main(String[] args) throws Exception{
-		// input
-		// N(나무 수) M(필요한 나무 길이)
-		// 나무 높이가 N개 만큼 주어짐 
-		
-		// 최소 M미터 나무를 가져가기 위해 절단기에 설정할 수 있는 높이 최대값??
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
@@ -24,46 +19,49 @@ public class Main_BJ_2805_나무자르기 {
 		
 		st = new StringTokenizer(br.readLine());
 		arr = new int[N];
-		int max = 0;
+		
+		int low=0;
+		int high= 0;
 		for (int i = 0; i < N; i++) {
 			int input = Integer.parseInt(st.nextToken());
-			max = Math.max(max, input);
+			high = Math.max(high, input);
 			arr[i] = input;
 		}
-		
-		int ans = binarySearch(M, 0, max);
-		
-		System.out.println(ans);
-	}
-	
-	// 이분탐색 메소드 기본 골격
-	private static int binarySearch(int key, int low, int high) {
 		
 		while(low <= high) {
 			int mid = (low+high)/2;
 			
-			// 나무 자르고 남은 나무
+			
 			long sum=0;
-			for(int i=0; i<N; i++) {
-				if(arr[i]>mid) {
-					sum += (arr[i]-mid);
+			for (int height : arr) {
+				if(height > mid) {
+					sum += (height-mid);
 				}
 			}
 			
-			if(key==sum) {
-				// 탐색 성공 
-				return mid;
-			}else if(key<sum) {
-				// 나무 길이 합이 더 크다면
-				// 가장 낮은값을 높인다 => 그러면 mid가 높아짐
-				low = mid + 1;
+			if(sum<M) {
+				// 자른 나무 길이 합이 필요한 나무 길이 보다 작은 경우
+				System.out.println("자른 나무 길이 합 < 필요한 나무 길이");
+				System.out.println("high : mid : low = " + high + " : "  + mid + " : " + low);
+				System.out.println("sum = " + sum);
+				high = mid-1;
+			}else if(sum>M){
+				// 자른 나무 길이 합이 필요한 나무 길이 보다 큰 경우
+				System.out.println("자른 나무 길이 합 > 필요한 나무 길이");
+				System.out.println("high : mid : low = " + high + " : "  + mid + " : " + low);
+				System.out.println("sum = " + sum);
+				low = mid+1;
 			}else {
-				// 필요한 나무 길이가 더 크다면 
-				// 가장 높은값을 낮춘다 => 그러면 mid가 더 낮아짐 
-				high = mid - 1;
+				// 자른 나무 길이 합이 필요한 나무 길이와 같은 경우
+				System.out.println("자른 나무 길이 합 == 필요한 나무 길이");
+				System.out.println("high : mid : low = " + high + " : "  + mid + " : " + low);
+				System.out.println("sum = " + sum);
+				System.out.println(mid);
+				System.exit(0);
 			}
 		}
 		
-		return high;
+		System.out.println(low-1);
+		
 	}
 }

@@ -1,4 +1,4 @@
-package boj.study;
+package study;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_14395_4연산 {
+public class Main_BJ_14395_4연산 {
 	static long s, t;
 	static List<Long> visited = new ArrayList<>(); 
 
