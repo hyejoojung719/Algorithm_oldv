@@ -59,7 +59,7 @@ public class Main_BJ_2206_벽부수고이동하기 {
 			Point temp = q.poll();
 
 			if(temp.row==N-1 && temp.col==M-1) {
-				ans = temp.cnt+1;
+				ans = temp.cnt;
 				break;
 			}
 			
