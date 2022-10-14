@@ -14,9 +14,10 @@ public class Main_BJ_17085_십자가2개놓기 {
 	static boolean[] selected;
 	static int[] selectedIdx = new int[2];
 	static List<int[]> empty = new ArrayList<>();
-	static int[][] deltas = {{1,0},{-1,0},{0,1},{0,-1}};	// 하 상 우 좌
+	static int[][] deltas = {{1,0},{-1,0},{0,1},{0,-1}};
 	static boolean[][] visited;
 	static int ans = Integer.MIN_VALUE;
+	static  Point point1=null, point2=null;
 
 	// bfs 돌면서 상후좌우 탐색=> 경계선 or . or 다른 십자가를 만나면 끝
 	// 상하좌우 한번 탐색 성공 시 count+1
@@ -65,49 +66,49 @@ public class Main_BJ_17085_십자가2개놓기 {
 		visited[row2][col2]=true;
 
 		int area1=0, area2=0;
-		System.out.println("row1 : col1 = " + row1 + " : " + col1);
-		System.out.println("row2 : col2 = " + row2 + " : " + col2);
-		while(!q1.isEmpty()) {
-			Point point1 = q1.poll();
+		while(!q1.isEmpty() || !q2.isEmpty()) {
+			
+			int cnt1=0, cnt2=0;
 
-			int cnt1=0;
+			if(!q1.isEmpty()) {
+                point1 = q1.poll();
+                
+				for(int dir=0; dir<4; dir++) {
+					// Point1
+					int mrow1 = point1.row + deltas[dir][0]*point1.area;
+					int mcol1 = point1.col + deltas[dir][1]*point1.area;
 
-			for(int dir=0; dir<4; dir++) {
-				// Point1
-				int mrow1 = point1.row + deltas[dir][0]*point1.area;
-				int mcol1 = point1.col + deltas[dir][1]*point1.area;
+					if(mrow1<0 || mcol1<0 || mrow1>=N || mcol1>=M ||
+							arr[mrow1][mcol1]=='.') break;
 
-				if(mrow1<0 || mcol1<0 || mrow1>=N || mcol1>=M ||
-						arr[mrow1][mcol1]=='.') break;
-
-				if(!visited[mrow1][mcol1]) {
-					visited[mrow1][mcol1] = true;
-					cnt1++;
+					if(!visited[mrow1][mcol1]) {
+						visited[mrow1][mcol1] = true;
+						cnt1++;
+					}
+				}
+				
+				if(cnt1==4) {
+					area1 = point1.area;
+					q1.offer(new Point(point1.row, point1.col, point1.area+1));
 				}
 			}
 			
-			if(cnt1==4) {
-				area1 = point1.area;
-				q1.offer(new Point(point1.row, point1.col, point1.area+1));
-			}
-		}
 
-		while(!q2.isEmpty()) {
-			Point point2 = q2.poll();
+			if(!q2.isEmpty()) {
+                point2 = q2.poll();
+                
+				for(int dir=0; dir<4; dir++) {
+					// Point2
+					int mrow2 = point2.row + deltas[dir][0]*point2.area;
+					int mcol2 = point2.col + deltas[dir][1]*point2.area;
 
-			int cnt2=0;
+					if(mrow2<0 || mcol2<0 || mrow2>=N || mcol2>=M ||
+							arr[mrow2][mcol2]=='.') break;
 
-			for(int dir=0; dir<4; dir++) {
-				// Point2
-				int mrow2 = point2.row + deltas[dir][0]*point2.area;
-				int mcol2 = point2.col + deltas[dir][1]*point2.area;
-
-				if(mrow2<0 || mcol2<0 || mrow2>=N || mcol2>=M ||
-						arr[mrow2][mcol2]=='.') break;
-
-				if(!visited[mrow2][mcol2]) {
-					visited[mrow2][mcol2] = true;
-					cnt2++;
+					if(!visited[mrow2][mcol2]) {
+						visited[mrow2][mcol2] = true;
+						cnt2++;
+					}
 				}
 				
 				if(cnt2==4) {
@@ -115,7 +116,7 @@ public class Main_BJ_17085_십자가2개놓기 {
 					q2.offer(new Point(point2.row, point2.col, point2.area+1));
 				}
 			}
-			
+
 		}
 
 		int area=(area1*4+1)*(area2*4+1);
@@ -124,30 +125,29 @@ public class Main_BJ_17085_십자가2개놓기 {
 	}
 
 
+	public static void main(String[] args) throws Exception{
+		// op : 십자가 넓이곱의 최대값 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-public static void main(String[] args) throws Exception{
-	// op : 십자가 넓이곱의 최대값 
-	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 
-	StringTokenizer st = new StringTokenizer(br.readLine());
-	N = Integer.parseInt(st.nextToken());
-	M = Integer.parseInt(st.nextToken());
-
-	arr = new char[N][M];
-	for (int i = 0; i < N; i++) {
-		String str = br.readLine();
-		for (int j = 0; j < M; j++) {
-			char ch = str.charAt(j);
-			arr[i][j] = ch;
-			if(ch=='#') {
-				empty.add(new int[] {i, j});
+		arr = new char[N][M];
+		for (int i = 0; i < N; i++) {
+			String str = br.readLine();
+			for (int j = 0; j < M; j++) {
+				char ch = str.charAt(j);
+				arr[i][j] = ch;
+				if(ch=='#') {
+					empty.add(new int[] {i, j});
+				}
 			}
 		}
+
+
+		selected = new boolean[empty.size()];
+		perm(0);
+		System.out.println(ans);
 	}
-
-
-	selected = new boolean[empty.size()];
-	perm(0);
-	System.out.println(ans);
-}
 }
