@@ -1,4 +1,4 @@
-package study;
+package boj.study;
 
 public class Main_BJ_17136_색종이붙이기 {
 	public static void main(String[] args) {

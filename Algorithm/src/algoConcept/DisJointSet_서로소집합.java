@@ -1,4 +1,4 @@
-package AlgoConcept;
+package algoConcept;
 
 public class DisJointSet_서로소집합 {
 	static int[] parent;
