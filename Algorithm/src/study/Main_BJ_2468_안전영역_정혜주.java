@@ -1,10 +1,10 @@
-package boj.bfsDfs;
+package study;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_2468_안전영역_정혜주 {
+public class Main_BJ_2468_안전영역_정혜주 {
 	
 	static boolean[][] isVisited;
 	// 상 우 하 좌
