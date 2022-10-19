@@ -1,4 +1,4 @@
-package AlgoConcept;
+package algoConcept;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,4 +1,4 @@
-package study;
+package boj.study;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_BJ_17085_십자가2개놓기2 {
+public class Main_BJ_17085_십자가2개놓기 {
 	static int N, M;
 	static char[][] arr;
 	static boolean[] selected;
