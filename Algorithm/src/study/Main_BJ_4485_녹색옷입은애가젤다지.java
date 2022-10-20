@@ -4,18 +4,18 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main_BJ_4485_녹색옷입은애가젤다지 {
 	static int N;
 	static int[][] map;
-	static final int INF = Integer.MIN_VALUE;
 	static int money;
 	static boolean[][] visited;
 	static int[][] deltas = {{0,1}, {0,-1}, {1,0}, {-1,0}};
 	
-	static class Link{
+	static class Link implements Comparable<Link>{
 		int row,col,money;
 
 		public Link(int row, int col, int money) {
@@ -24,6 +24,12 @@ public class Main_BJ_4485_녹색옷입은애가젤다지 {
 			this.col = col;
 			this.money = money;
 		}
+
+		@Override
+		public int compareTo(Link o) {
+			// TODO Auto-generated method stub
+			return this.money-o.money;
+		}
 		
 		
 	}
@@ -31,24 +37,26 @@ public class Main_BJ_4485_녹색옷입은애가젤다지 {
 	static int bfs(int row, int col, int money) {
 		int ans = 0;
 		
-		Queue<Link> q = new LinkedList<>();
+		PriorityQueue<Link> q = new PriorityQueue<>();
 		q.offer(new Link(row,col,money));
 		visited[row][col] = true;
 		
 		while(!q.isEmpty()) {
 			Link temp = q.poll();
 			
+			if(temp.row==N-1 && temp.col==N-1) {
+				// 도착지점에 도달했을 때
+//				System.out.println(temp.money);
+				ans = temp.money;
+				break;
+			}
+			
+//			System.out.println(temp.money);
 			for (int dir = 0; dir < 4; dir++) {
 				int mrow = temp.row + deltas[dir][0];
 				int mcol = temp.col + deltas[dir][1];
 			
 				if(mrow<0 || mcol<0 || mrow>=N || mcol>=N) continue;
-				
-				if(mrow==N-1 && mcol==N-1) {
-					// 도착지점에 도달했을 때
-					ans = temp.money + map[mrow][mcol];
-					break;
-				}
 				
 				if(!visited[mrow][mcol]) {
 					q.offer(new Link(mrow, mcol, temp.money+map[mrow][mcol]));
@@ -91,8 +99,7 @@ public class Main_BJ_4485_녹색옷입은애가젤다지 {
 					map[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
-			
-			money=INF;
+			money=map[0][0];
 			visited = new boolean[N][N];
 			int answer = bfs(0,0,money);
 			sb.append("Problem "+ (index++) + ": "+answer+"\n");
